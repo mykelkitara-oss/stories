@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jay's Impact Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#05050a;
+      --card:#0b0b12;
+      --muted:#aeb6c2;
+      --accent-blue:#00b0ff;
+      --accent-red:#ff2b2b;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:18px;
+      left:20px;
+      right:20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:60;
+      gap:20px;
+      padding:10px 18px;
+      background:linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+      border-radius:12px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 6px 30px rgba(0,0,0,0.6);
+    }
+    .logo{font-weight:800;font-size:1.05rem;letter-spacing:0.6px;color:transparent;background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));-webkit-background-clip:text}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px;transition:all .18s}
+    .nav-links a:hover{color:#fff;transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,176,255,0.08)}
+
+    /* HERO: group photo cover */
+    .hero{
+      height:100vh;
+      width:100%;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:url("https://github.com/mykelkitara-oss/feeding/blob/main/IMG_0075.jpeg?raw=true");
+      background-position:center;
+      background-size:cover;
+      background-repeat:no-repeat;
+      transform:scale(1.02);
+      filter:brightness(.45) saturate(.9);
+      z-index:0;
+    }
+    .hero-inner{
+      position:relative;z-index:5;max-width:1100px;padding:0 20px;
+      animation:fadeUp .9s ease both;
+    }
+    .hero h1{
+      font-size:clamp(28px,5.2vw,56px);
+      line-height:1.02;
+      font-weight:900;
+      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
+      -webkit-background-clip:text;color:transparent;
+      text-shadow:0 10px 40px rgba(0,0,0,0.6);
+    }
+    .hero p{
+      margin-top:18px;color:var(--muted);font-size:1.05rem;max-width:860px;margin-left:auto;margin-right:auto;
+    }
+    .hero-cta{
+      margin-top:26px;display:inline-block;padding:12px 26px;border-radius:999px;
+      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
+      color:#fff;font-weight:700;box-shadow:0 12px 40px rgba(0,176,255,0.08),0 10px 30px rgba(255,43,43,0.06);
+    }
+    /* Section base */
+    .section{
+      padding:80px 24px;
+      max-width:1200px;margin:0 auto;
+    }
+    .section h2{
+      font-size:1.9rem;margin-bottom:20px;color:var(--accent-blue);
+      text-align:center;font-weight:800;
+      text-shadow:0 6px 30px rgba(0,176,255,0.06);
+    }
+    .lead{color:var(--muted);max-width:920px;margin:12px auto 30px;text-align:center}
+
+    /* Jarvis video (plays with audio - controls only, no autoplay) */
+    .jarvis-video{
+      display:block;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.7);
+      max-width:1100px;
+    }
+    .jarvis-video video{width:100%;height:auto;display:block;background:#000}
+
+    /* About Jarvis */
+    .about-row{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-top:30px}
+    .about-photo{width:100%;height:520px;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+    .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .about-text h3{color:var(--accent-red);font-size:1.6rem;margin-bottom:12px}
+    .about-text p{color:var(--muted);line-height:1.7}
+
+    @media(max-width:900px){
+      .about-row{grid-template-columns:1fr;gap:20px}
+      .about-photo{height:380px}
+    }
+
+    /* Success Stories (Instagram embed) */
+    .success-embed{max-width:900px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+    .success-embed iframe{width:100%;height:560px;border:0;display:block}
+
+    /* Programs full-width photos */
+    .programs-grid{display:grid;grid-template-columns:1fr;gap:22px}
+    .program-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6)
+    }
+    .program-card img{width:100%;height:420px;object-fit:cover;display:block}
+    .program-card .meta{padding:22px}
+    .program-card h4{color:var(--accent-blue);margin-bottom:8px}
+    .program-card p{color:var(--muted)}
+
+    /* Signups */
+    .forms{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px}
+    @media(max-width:900px){.forms{grid-template-columns:1fr}}
+    .form-card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+    .form-card label{display:block;font-weight:600;margin-top:12px;color:#fff}
+    .form-card input,.form-card textarea{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:#0b0b0f;color:#fff}
+    .form-card button{margin-top:14px;padding:12px 16px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));color:#fff;font-weight:700;cursor:pointer}
+    .ai-note{margin-top:12px;color:var(--muted);font-weight:600;text-align:center}
+
+    /* Donate */
+    .donate-wrap{max-width:720px;margin:0 auto;padding:28px;border-radius:14px;background:linear-gradient(90deg,#05070a,rgba(0,0,0,0.2));box-shadow:0 20px 60px rgba(0,0,0,0.7)}
+    .donate-cta{display:inline-block;margin-top:18px;padding:12px 26px;border-radius:999px;background:linear-gradient(90deg,var(--accent-red),var(--accent-blue));color:#fff;font-weight:800;text-decoration:none}
+    .donate-cta:hover{transform:translateY(-4px)}
+
+    footer{padding:28px;text-align:center;color:var(--muted);font-size:.95rem;border-top:1px solid rgba(255,255,255,0.02);margin-top:40px}
+
+    /* subtle fadeUp animation */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    .fade-up{animation:fadeUp .8s ease both}
+  </style>
+</head>
+<body>
+
+  <nav class="fade-up" aria-label="Main navigation">
+    <div class="logo">Jay’s Impact</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#jarvis-video">Our Story</a>
+      <a href="#success">Success Stories</a>
+      <a href="#programs">Programs</a>
+      <a href="#signup">Sign Up</a>
+      <a href="#donate">Donate</a>
+    </div>
+  </nav>
+
+  <!-- HERO: group photo cover with message -->
+  <header class="hero" role="banner">
+    <div class="hero-inner fade-up">
+      <h1>Building Hope — Transforming Futures</h1>
+      <p>We uplift youth, rebuild neighborhoods, and create opportunity through mentorship, service, and leadership.</p>
+      <a class="hero-cta" href="#jarvis-video">Hear Jarvis’ Story</a>
+    </div>
+  </header>
+
+  <!-- JARVIS VIDEO (plays with audio; user clicks play) -->
+  <section id="jarvis-video" class="section fade-up" aria-labelledby="jarvis-title">
+    <h2 id="jarvis-title">Our Story — Jarvis Speaks</h2>
+    <div class="jarvis-video">
+      <video controls preload="metadata">
+        <source src="https://github.com/mykelkitara-oss/feeding/raw/main/%E2%80%9CThis%20is%20who%20Jay%E2%80%99s%20Impact%20is!%20%F0%9F%92%AA%F0%9F%8F%BD%E2%9C%A8%20We%E2%80%99re%20on%20a%20mission%20to%20impact%20lives%20and%20build%20a%20better%20future.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+    <p class="lead">Listen to Jarvis Chaney — founder, mentor, and the heartbeat of Jay’s Impact — as he shares the vision behind our movement.</p>
+  </section>
+
+  <!-- ABOUT (Jarvis image + bio) -->
+  <section id="about" class="section fade-up" aria-labelledby="about-title">
+    <h2 id="about-title">Who Jarvis Is</h2>
+    <div class="about-row">
+      <div class="about-photo">
+        <img src="https://github.com/mykelkitara-oss/feeding/blob/main/Hello!%20I%20am%20Jarvis%20Chaney.jpeg?raw=true" alt="Jarvis Chaney">
+      </div>
+      <div class="about-text">
+        <h3>Jarvis Chaney — Founder</h3>
+        <p>Jarvis started Jay’s Impact from a simple belief: community-led care creates lasting change. He brings people together, builds programs that work, and leads with humility and relentless optimism. Under his guidance, Jay’s Impact runs mentorship sessions, food distribution, youth workshops, and neighborhood rebuilding projects — all designed to create pathways to long-term success.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS STORIES (Instagram reel embed) -->
+  <section id="success" class="section fade-up" aria-labelledby="success-title">
+    <h2 id="success-title">Success Stories</h2>
+    <div class="success-embed">
+      <iframe src="https://www.instagram.com/reel/DIGq1QSgvwP/embed" loading="lazy" allow="encrypted-media; autoplay; clipboard-write; picture-in-picture"></iframe>
+    </div>
+    <p class="lead">Real moments captured from our events and programs — proofs that community-first action changes lives.</p>
+  </section>
+
+  <!-- PROGRAMS (3 full-width images describing each) -->
+  <section id="programs" class="section fade-up" aria-labelledby="programs-title">
+    <h2 id="programs-title">Programs We Offer</h2>
+    <div class="programs-grid">
+      <article class="program-card program">
+        <img src="https://github.com/mykelkitara-oss/feeding/blob/main/IMG_1908.jpeg?raw=true" alt="One-on-One Mentoring">
+        <div class="meta">
+          <h4>One-on-One Mentoring</h4>
+          <p>Individual mentorship for youth — focused coaching, academic help, and long-term support to unlock potential.</p>
+        </div>
+      </article>
+
+      <article class="program-card program">
+        <img src="https://github.com/mykelkitara-oss/feeding/blob/main/IMG_0153.jpeg?raw=true" alt="Youth Empowerment">
+        <div class="meta">
+          <h4>Youth Empowerment</h4>
+          <p>Workshops, leadership labs, and group projects that build confidence, skills, and a future-focused mindset.</p>
+        </div>
+      </article>
+
+      <article class="program-card program">
+        <img src="https://github.com/mykelkitara-oss/feeding/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true" alt="Community Rebuilding">
+        <div class="meta">
+          <h4>Community Rebuilding</h4>
+          <p>Hands-on neighborhood projects that restore spaces, build pride, and create safe places for families to thrive.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SIGNUPS: Kids then Volunteers -->
+  <section id="signup" class="section fade-up" aria-labelledby="signup-title">
+    <h2 id="signup-title">Sign Up — Get Involved</h2>
+    <p class="lead">Two ways to join: young people sign up for programs; volunteers join to support our mission. Both forms submit to Formspree and will notify Jay’s team.</p>
+
+    <div class="forms">
+      <!-- Kids sign-up -->
+      <div class="form-card">
+        <h4 style="color:var(--accent-blue);margin-bottom:6px">Kids / Youth Application</h4>
+        <form action="https://formspree.io/f/mvgprgpn" method="POST" onsubmit="showAiNote(event,'kids')">
+          <label>Full name</label>
+          <input type="text" name="name" required>
+          <label>Age</label>
+          <input type="text" name="age" required>
+          <label>Parent/Guardian email</label>
+          <input type="email" name="email" required>
+          <label>Which program?</label>
+          <input type="text" name="program_interest" placeholder="e.g. Mentoring, Youth Empowerment">
+          <label>Why do you want to join?</label>
+          <textarea name="message" rows="4"></textarea>
+          <button type="submit">Apply</button>
+        </form>
+        <div class="ai-note" id="ai-kids" style="display:none">✅ Thanks! Jarvis will text the parent/guardian soon. 🤖📱</div>
+      </div>
+
+      <!-- Volunteer sign-up -->
+      <div class="form-card">
+        <h4 style="color:var(--accent-red);margin-bottom:6px">Volunteer / Partner</h4>
+        <form action="https://formspree.io/f/mvgprgpn" method="POST" onsubmit="showAiNote(event,'vol')">
+          <label>Full name</label>
+          <input type="text" name="name" required>
+          <label>Email</label>
+          <input type="email" name="email" required>
+          <label>Phone (optional)</label>
+          <input type="text" name="phone">
+          <label>How would you like to help?</label>
+          <textarea name="message" rows="4" placeholder="e.g. mentor, event support, donations"></textarea>
+          <button type="submit">Sign Up to Volunteer</button>
+        </form>
+        <div class="ai-note" id="ai-vol" style="display:none">✅ Thank you! Jarvis will reach out soon to coordinate. 🤖📱</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="section fade-up" aria-labelledby="donate-title">
+    <h2 id="donate-title">Support Our Work</h2>
+    <p class="lead">Your gift sustains meals, mentorship, and community projects. Every dollar multiplies impact.</p>
+    <div class="donate-wrap">
+      <p style="color:var(--muted);max-width:800px;margin:0 auto;text-align:center">Secure checkout powered by Stripe.</p>
+      <div style="text-align:center;margin-top:18px">
+        <a class="donate-cta" href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00" target="_blank" rel="noopener">Donate via Stripe</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="max-width:1000px;margin:0 auto">
+      <p>© 2025 Jay’s Impact Center — 3311 Glenwood Rd, Decatur, GA</p>
+      <p style="margin-top:8px;color:var(--muted)">Follow us: <a href="https://instagram.com/jaysimpact" target="_blank" style="color:var(--accent-blue);text-decoration:none;margin-left:6px">@jaysimpact</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function showAiNote(e, which){
+      e.preventDefault();
+      // submit via fetch to Formspree for better UX (preserve provided action)
+      const form = e.target;
+      const action = form.action;
+      const data = new FormData(form);
+      fetch(action, { method: 'POST', body: data, mode: 'cors' })
+        .then(()=> {
+          if(which === 'kids'){
+            document.getElementById('ai-kids').style.display = 'block';
+          } else {
+            document.getElementById('ai-vol').style.display = 'block';
+          }
+          form.reset();
+        })
+        .catch(()=> {
+          // fallback: show note and still reset
+          if(which === 'kids') document.getElementById('ai-kids').style.display = 'block';
+          else document.getElementById('ai-vol').style.display = 'block';
+          form.reset();
+        });
+    }
+    // Smooth in-view animation trigger (simple)
+    document.addEventListener('DOMContentLoaded', function(){
+      const items = document.querySelectorAll('.fade-up, .program-card, .program, .form-card');
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(ent=>{
+          if(ent.isIntersecting){
+            ent.target.style.animation = 'fadeUp .7s ease both';
+            obs.unobserve(ent.target);
+          }
+        });
+      }, {threshold:0.12});
+      items.forEach(i=>obs.observe(i));
+    });
+  </script>
+</body>
+</html>
