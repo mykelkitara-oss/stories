@@ -1,242 +1,288 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jay’s Impact – Community Empowerment</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay’s Impact — Empowering The Future</title>
 
 <style>
-/* GLOBAL */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
+/* --------------------------
+   GLOBAL THEME
+---------------------------*/
 body {
-  font-family: "Poppins", sans-serif;
-  background: #0d0d0d;
-  color: #fff;
-  overflow-x: hidden;
-}
-section {
-  padding: 80px 8%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: white;
+    scroll-behavior: smooth;
 }
 
-/* NAV */
+/* Gold highlight */
+.gold { color: #e3b955; }
+
+/* --------------------------
+   GLASS NAVBAR
+---------------------------*/
 nav {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 50;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(10px);
-  padding: 18px 8%;
-  display: flex;
-  gap: 30px;
-  justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    background: rgba(0,0,0,0.45);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 1000;
 }
+
 nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: 0.2s;
 }
 
-/* HERO */
+nav a:hover {
+    color: #e3b955;
+}
+
+/* --------------------------
+   HERO SECTION
+---------------------------*/
 .hero {
-  min-height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: linear-gradient(
-      rgba(0,0,0,0.45),
-      rgba(0,0,0,0.55)
-    ),
-    url("https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true")
-    center/cover no-repeat;
+    margin-top: 85px;
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    animation: slideShow 24s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
+
+@keyframes slideShow {
+    0% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true'); }
+    33% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true'); }
+    66% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true'); }
+    100% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true'); }
+}
+
 .hero h1 {
-  font-size: 3.2rem;
-  font-weight: 900;
-  text-shadow: 0 0 18px #0879ff;
+    font-size: 65px;
+    font-weight: 700;
+    text-shadow: 0 0 25px black;
 }
 
-/* TITLES */
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #43a8ff;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+.hero .cta {
+    margin-top: 20px;
+    padding: 15px 32px;
+    background: #e3b955;
+    color: black;
+    font-weight: 700;
+    border-radius: 8px;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
-/* FOUNDER */
-.founder {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  align-items: flex-start;
-}
-.founder img {
-  width: 350px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-.founder div {
-  max-width: 600px;
-}
-.founder h2 {
-  font-size: 2rem;
-  color: #49adff;
-  margin-bottom: 12px;
-}
-.founder p {
-  line-height: 1.6;
-  font-size: 1rem;
+.hero .cta:hover {
+    box-shadow: 0 0 20px #e3b955;
 }
 
-/* STORY PARAGRAPH */
-.story-text {
-  max-width: 850px;
-  margin: auto;
-  text-align: center;
-  line-height: 1.7;
-  font-size: 1.05rem;
+/* --------------------------
+   SECTIONS
+---------------------------*/
+section {
+    padding: 100px 10%;
 }
 
-/* MEDIA GRID */
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 25px;
-}
-.media-grid img,
-.media-grid video {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
-/* TESTIMONIAL */
-.testimonials {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 25px;
-}
-.testimonial-card {
-  background: #131313;
-  border: 1px solid #2b2b2b;
-  border-radius: 10px;
-  padding: 25px;
-}
-.testimonial-card p {
-  line-height: 1.6;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-.testimonial-card .name {
-  font-weight: 700;
-  color: #4aa5ff;
+p {
+    font-size: 18px;
+    line-height: 1.6;
 }
 
-/* FOOTER */
+/* --------------------------
+   IMAGE ROWS / GALLERY
+---------------------------*/
+.img-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.img-row img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* --------------------------
+   FORMS
+---------------------------*/
+form {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 14px 26px;
+    background: #e3b955;
+    color: black;
+    border: none;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    box-shadow: 0 0 18px #e3b955;
+}
+
+/* --------------------------
+   FOOTER
+---------------------------*/
 footer {
-  padding: 30px 8%;
-  text-align: center;
-  border-top: 1px solid #1c1c1c;
-  color: #aaa;
-  font-size: 0.9rem;
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    text-align: center;
+    margin-top: 80px;
 }
+
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<!-- NAVBAR -->
 <nav>
-  <a href="#about">About</a>
-  <a href="#story">Our Story</a>
-  <a href="#success">Success</a>
-  <a href="#gallery">Gallery</a>
+    <div class="logo gold"><b>JAY’S IMPACT</b></div>
+    <div>
+        <a href="#about">About</a>
+        <a href="#story">Our Story</a>
+        <a href="#programs">Programs</a>
+        <a href="#volunteer">Volunteer</a>
+        <a href="#donate">Donate</a>
+    </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <h1>Jay’s Impact – Urban Leadership, Real Change</h1>
-</section>
+<div class="hero">
+    <div>
+        <h1><span class="gold">Jay’s Impact</span> Is Changing Lives</h1>
+        <a class="cta" href="#donate">Support The Mission</a>
+    </div>
+</div>
 
 <!-- ABOUT -->
-<section id="about" class="founder">
-  <img src="https://github.com/mykelkitara-oss/stories/blob/main/Hello!%20I%20am%20Jarvis%20Chaney-fotor-20251030144635.jpg?raw=true" />
-
-  <div>
-    <h2>Jarvis Chaney — Founder</h2>
+<section id="about">
+    <h2 class="gold">About Jay’s Impact</h2>
     <p>
-      Jay’s Impact was built to inspire, train, and elevate young leaders
-      through real community development, mentorship, personal growth, and
-      results-driven guidance.
+        Jay’s Impact is dedicated to transforming youth, families, and communities by offering mentorship,
+        leadership programs, and impactful outreach. Our mission is to build brighter futures through
+        empowerment, structure, creativity, and love.
     </p>
-  </div>
+
+    <h3 class="gold">Meet Jarvis Chaney</h3>
+    <img src="https://github.com/mykelkitara-oss/stories/blob/main/Hello!%20I%20am%20Jarvis%20Chaney-fotor-20251030144635.jpg?raw=true" 
+         style="width:260px;border-radius:12px;margin-top:15px;">
 </section>
 
-<!-- OUR STORY -->
+<!-- OUR STORY (YouTube) -->
 <section id="story">
-  <h2 class="section-title">Our Story</h2>
-  <p class="story-text">
-    Community comes first. Jay’s Impact focuses on hands-on knowledge,
-    real-world professional skills, and mindset development. The goal is
-    simple: give young people the tools to win — in business, in school, and
-    in life.
-  </p>
+    <h2 class="gold">Our Story</h2>
+    <iframe width="100%" height="400" 
+        src="https://www.youtube.com/embed/zgNj6GWTLEo"
+        frameborder="0" allowfullscreen style="border-radius:12px;"></iframe>
+</section>
+
+<!-- INSTAGRAM REEL -->
+<section>
+    <h2 class="gold">Jay’s Impact — Instagram Highlight</h2>
+    <iframe 
+       src="https://www.instagram.com/reel/DQRca2BkTOS/embed"
+       width="100%" height="500" frameborder="0" scrolling="no"
+       allowtransparency="true" style="border-radius:20px;">
+    </iframe>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+    <h2 class="gold">Programs</h2>
+
+    <div class="img-row">
+        <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
+        <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
+        <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
+    </div>
 </section>
 
 <!-- SUCCESS STORIES -->
-<section id="success">
-  <h2 class="section-title">Success Stories</h2>
-  <div class="media-grid">
-
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true" />
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true" />
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true" />
-
-    <video controls>
-      <source src="This is who Jay’s Impact is! 💪🏽✨ We’re on a mission to impact lives and build a better future.mp4" type="video/mp4" />
-    </video>
-
-    <video controls>
-      <source src="Appreciation is conformation that you are walking in your purpose! HAPPY BIRTHDAY TO ME!!! #thet.mp4" type="video/mp4" />
-    </video>
-  </div>
+<section>
+    <h2 class="gold">Success Stories</h2>
+    <iframe width="100%" height="400" 
+        src="https://www.youtube.com/embed/zgNj6GWTLEo"
+        frameborder="0" allowfullscreen style="border-radius:12px;"></iframe>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- VOLUNTEER -->
+<section id="volunteer">
+    <h2 class="gold">Volunteer With Us</h2>
+    <form>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Phone Number">
+        <textarea placeholder="Why do you want to volunteer?" rows="4"></textarea>
+        <button>Submit Volunteer Application</button>
+    </form>
+</section>
+
+<!-- KIDS SIGNUP -->
 <section>
-  <h2 class="section-title">Voices From the Community</h2>
+    <h2 class="gold">Kids Program Enrollment</h2>
+    <form>
+        <input type="text" placeholder="Parent/Guardian Name">
+        <input type="text" placeholder="Child’s Name">
+        <input type="number" placeholder="Child’s Age">
+        <input type="email" placeholder="Contact Email">
+        <textarea placeholder="Tell us about your child" rows="4"></textarea>
+        <button>Sign Up</button>
+    </form>
+</section>
 
-  <div class="testimonials">
-    <div class="testimonial-card">
-      <p>“Jay’s Impact showed me how to believe bigger.”</p>
-      <div class="name">– Student</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>“Gave my son structure, goals, and real guidance.”</p>
-      <div class="name">– Parent</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>“We don’t just talk here — we learn and experience success.”</p>
-      <div class="name">– Participant</div>
-    </div>
-  </div>
+<!-- DONATE -->
+<section id="donate">
+    <h2 class="gold">Support the Mission</h2>
+    <p>Your donation helps us mentor and empower the next generation.</p>
+    <a href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00">
+        <button>Donate Now</button>
+    </a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  © 2025 Jay’s Impact — Urban Leadership for the Next Generation
+    <p>© 2025 Jay’s Impact — All Rights Reserved</p>
 </footer>
 
 </body>
-</html
+</html>
