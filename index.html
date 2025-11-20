@@ -1,412 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jay's Impact Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jay’s Impact</title>
 
-  <style>
-    :root{
-      --bg:#05050a;
-      --card:#0b0b12;
-      --muted:#aeb6c2;
-      --accent-blue:#00b0ff;
-      --accent-red:#ff2b2b;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:var(--bg);
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
+<style>
+  /* ======================================
+     GLOBAL STYLES
+  ====================================== */
+  body {
+    margin: 0;
+    background: #0d0d0d;
+    color: #e6e6e6;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    /* NAV */
-    nav{
-      position:fixed;
-      top:18px;
-      left:20px;
-      right:20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      z-index:60;
-      gap:20px;
-      padding:10px 18px;
-      background:linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
-      border-radius:12px;
-      backdrop-filter:blur(8px);
-      box-shadow:0 6px 30px rgba(0,0,0,0.6);
-    }
-    .logo{
-      font-weight:800;font-size:1.05rem;
-      letter-spacing:0.6px;
-      color:transparent;
-      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
-      -webkit-background-clip:text;
-    }
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{
-      color:var(--muted);text-decoration:none;font-weight:600;
-      padding:8px 12px;border-radius:8px;transition:all .18s}
-    .nav-links a:hover{
-      color:#fff;
-      transform:translateY(-2px);
-      box-shadow:0 6px 24px rgba(0,176,255,0.08)
-    }
+  h1,h2,h3 {
+    font-weight: 700;
+    color: #d4a73b;
+    letter-spacing: 0.5px;
+  }
 
-    /* HERO */
-    .hero{
-      height:100vh;width:100%;
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;inset:0;
-      background-image:url("https://github.com/mykelkitara-oss/feeding/blob/main/IMG_0075.jpeg?raw=true");
-      background-position:center;
-      background-size:cover;
-      background-repeat:no-repeat;
-      transform:scale(1.02);
-      filter:brightness(.45) saturate(.9);
-      z-index:0;
-    }
-    .hero-inner{
-      position:relative;z-index:5;max-width:1100px;padding:0 20px;
-      animation:fadeUp .9s ease both;
-    }
-    .hero h1{
-      font-size:clamp(28px,5.2vw,56px);
-      line-height:1.02;
-      font-weight:900;
-      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
-      -webkit-background-clip:text;
-      color:transparent;
-    }
-    .hero p{
-      margin-top:18px;color:var(--muted);
-      font-size:1.05rem;
-      max-width:860px;margin-left:auto;margin-right:auto;
-    }
-    .hero-cta{
-      margin-top:26px;display:inline-block;padding:12px 26px;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
-      color:#fff;font-weight:700;
-    }
+  a {
+    text-decoration: none;
+    color: #d4a73b;
+  }
 
-    /* Section */
-    .section{
-      padding:80px 24px;
-      max-width:1200px;margin:0 auto;
-    }
-    .section h2{
-      font-size:1.9rem;margin-bottom:20px;color:var(--accent-blue);
-      text-align:center;font-weight:800;
-    }
-    .lead{color:var(--muted);max-width:920px;margin:12px auto 30px;text-align:center}
+  section {
+    padding: 80px 8%;
+    max-width: 1300px;
+    margin: auto;
+  }
 
-    /* Video */
-    .jarvis-video{
-      display:block;margin:0 auto;border-radius:14px;
-      overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.7);
-      max-width:1100px;
-    }
+  /* ======================================
+     NAVIGATION
+  ====================================== */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(8px);
+    padding: 20px 8%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+  }
 
-    /* ABOUT */
-    .about-row{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-top:30px}
-    .about-photo{
-      width:100%;height:520px;border-radius:14px;overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,0.6)
-    }
-    .about-text h3{color:var(--accent-red);font-size:1.6rem;margin-bottom:12px}
-    .about-text p{color:var(--muted);line-height:1.7}
-    @media(max-width:900px){
-      .about-row{grid-template-columns:1fr;gap:20px}
-      .about-photo{height:380px}
-    }
+  nav a {
+    color: #e6e6e6;
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: .3s;
+  }
+  nav a:hover {
+    color: #d4a73b;
+  }
 
-    /* Success */
-    .success-embed{max-width:900px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+  /* ======================================
+     HERO
+  ====================================== */
+  .hero {
+    height: 95vh;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
 
-    /* Programs */
-    .programs-grid{display:grid;grid-template-columns:1fr;gap:22px}
-    .program-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,0.6);
-    }
-    .program-card img{width:100%;height:420px;object-fit:cover}
+  .hero img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fade 18s infinite;
+    opacity: 0;
+  }
 
-    /* Forms */
-    .forms{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px}
-    @media(max-width:900px){.forms{grid-template-columns:1fr}}
-    .form-card{
-      background:var(--card);padding:20px;border-radius:12px;
-      box-shadow:0 12px 40px rgba(0,0,0,0.6)
-    }
-    .form-card input,.form-card textarea{
-      width:100%;padding:12px;margin-top:8px;
-      border-radius:8px;border:1px solid rgba(255,255,255,0.04);
-      background:#0b0b0f;color:#fff
-    }
+  .hero img:nth-child(1) { animation-delay: 0s; }
+  .hero img:nth-child(2) { animation-delay: 6s; }
+  .hero img:nth-child(3) { animation-delay: 12s; }
 
-    /* Donate */
-    .donate-wrap{
-      max-width:720px;margin:0 auto;padding:28px;border-radius:14px;
-      background:linear-gradient(90deg,#05070a,rgba(0,0,0,0.2));
-      box-shadow:0 20px 60px rgba(0,0,0,0.7)
-    }
+  @keyframes fade {
+    0%   { opacity: 0 }
+    10%  { opacity: 1 }
+    30%  { opacity: 1 }
+    40%  { opacity: 0 }
+    100% { opacity: 0 }
+  }
 
-    footer{
-      padding:28px;text-align:center;color:var(--muted);
-      font-size:.95rem;border-top:1px solid rgba(255,255,255,0.02);margin-top:40px
-    }
+  .hero-text {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
 
-    /* FAQ */
-    .faq-item{
-      background:#0d0e15;
-      border-radius:10px;
-      padding:16px;
-      margin-bottom:12px;
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,0.05);
-      transition:.2s;
-    }
-    .faq-item:hover{background:#12131c}
-    .faq-question{font-weight:700}
-    .faq-answer{display:none;color:var(--muted);margin-top:8px}
+  .hero-text h1 {
+    font-size: 60px;
+    color: white;
+  }
 
-    /* Chatbot */
-    .chat-btn{
-      position:fixed;bottom:24px;right:24px;
-      width:60px;height:60px;border-radius:50%;
-      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;font-weight:800;font-size:22px;z-index:200;
-    }
-    .chat-window{
-      position:fixed;bottom:100px;right:24px;width:300px;
-      background:#0c0d14;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.6);
-      display:none;flex-direction:column;z-index:200;
-      overflow:hidden;
-    }
-    .chat-header{
-      padding:14px;font-weight:700;
-      background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
-    }
-    .chat-messages{
-      height:260px;overflow-y:auto;padding:14px;line-height:1.5;color:var(--muted)
-    }
-    .chat-input{
-      display:flex;border-top:1px solid rgba(255,255,255,0.05)
-    }
-    .chat-input input{
-      flex:1;background:#0b0b12;border:none;padding:12px;color:#fff
-    }
-    .chat-input button{
-      padding:12px 20px;border:none;
-      background:var(--accent-blue);color:#fff;
-      font-weight:700;cursor:pointer
-    }
+  .hero-text p {
+    font-size: 20px;
+    margin-top: 10px;
+    max-width: 600px;
+    margin: 10px auto;
+    color: #fff;
+  }
 
-    /* Animations */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-  </style>
+  /* ======================================
+     GOLD DIVIDER
+  ====================================== */
+  .divider {
+    width: 120px;
+    height: 2px;
+    background: #d4a73b;
+    margin: 25px auto;
+  }
+
+  /* ======================================
+     LEADERSHIP CARDS
+  ====================================== */
+  .grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+  }
+
+  .card {
+    background: #111;
+    padding: 25px;
+    border: 1px solid #292929;
+    border-radius: 10px;
+    transition: .3s;
+  }
+  .card:hover {
+    border-color: #d4a73b;
+    transform: translateY(-4px);
+  }
+
+  /* ======================================
+     GALLERY
+  ====================================== */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .gallery img, .gallery video {
+    width: 100%;
+    border-radius: 8px;
+    transition: .3s;
+    cursor: pointer;
+  }
+
+  .gallery img:hover, .gallery video:hover {
+    transform: scale(1.03);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    display: none;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox img, .lightbox video {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  .close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+  }
+
+  /* ======================================
+     FOOTER
+  ====================================== */
+  footer {
+    background: #000;
+    text-align: center;
+    padding: 50px 0;
+    color: #6e6e6e;
+  }
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Jay’s Impact</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#jarvis-video">Our Story</a>
-    <a href="#success">Success Stories</a>
-    <a href="#programs">Programs</a>
-    <a href="#signup">Sign Up</a>
-    <a href="#faq">FAQ</a>
-    <a href="#donate">Donate</a>
+  <div style="font-weight:bold;color:#d4a73b;">JAY’S IMPACT</div>
+  <div>
+    <a href="#about">ABOUT</a>
+    <a href="#mission">MISSION</a>
+    <a href="#programs">PROGRAMS</a>
+    <a href="#leadership">LEADERSHIP</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#contact">CONTACT</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero">
-  <div class="hero-inner">
-    <h1>Building Hope — Transforming Futures</h1>
-    <p>We uplift youth, rebuild neighborhoods, and create opportunity through mentorship, service, and leadership.</p>
-    <a class="hero-cta" href="#jarvis-video">Hear Jarvis’ Story</a>
-  </div>
-</header>
+<section class="hero">
+  <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
+  <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
+  <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
 
-<!-- VIDEO -->
-<section id="jarvis-video" class="section">
-  <h2>Our Story — Jarvis Speaks</h2>
-  <div class="jarvis-video">
-    <video controls preload="metadata">
-      <source src="https://github.com/mykelkitara-oss/feeding/raw/main/%E2%80%9CThis%20is%20who%20Jay%E2%80%99s%20Impact%20is!%20%F0%9F%92%AA%F0%9F%8F%BD%E2%9C%A8%20We%E2%80%99re%20on%20a%20mission%20to%20impact%20lives%20and%20build%20a%20better%20future.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+  <div class="hero-text">
+    <h1>Developing Leaders of the Future</h1>
+    <p>Real mentorship, real growth, real opportunities.</p>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section">
-  <h2>Who Jarvis Is</h2>
-  <div class="about-row">
-    <div class="about-photo">
-      <img src="https://github.com/mykelkitara-oss/feeding/blob/main/Hello!%20I%20am%20Jarvis%20Chaney.jpeg?raw=true" alt="">
-    </div>
-    <div class="about-text">
-      <h3>Jarvis Chaney — Founder</h3>
-      <p>Jarvis started Jay’s Impact with a belief that community-led care creates lasting change.</p>
-    </div>
-  </div>
+<section id="about">
+  <h2>Who We Are</h2>
+  <div class="divider"></div>
+
+  <video controls style="width:100%;border-radius:10px;">
+    <source src="This is who Jay’s Impact is! 💪🏽✨ We’re on a mission to impact lives and build a better future.mp4" type="video/mp4">
+  </video>
+
+  <p>
+    Jay’s Impact is a movement built to develop the next generation into leaders with the character, discipline, emotional intelligence, and purpose to succeed in life. 
+  </p>
+  <p>
+    We provide real-world experiences, mentorship structures, and environments that strengthen communication, mindset, and professional growth.
+  </p>
 </section>
 
-<!-- SUCCESS -->
-<section id="success" class="section">
-  <h2>Success Stories</h2>
-  <div class="success-embed">
-    <iframe src="https://www.instagram.com/reel/DIGq1QSgvwP/embed"></iframe>
-  </div>
+<!-- FOUNDER -->
+<section>
+  <h2>Founder – Jarvis Chaney</h2>
+  <div class="divider"></div>
+
+  <img src="https://github.com/mykelkitara-oss/stories/blob/main/Hello!%20I%20am%20Jarvis%20Chaney-fotor-20251030144635.jpg?raw=true" style="width:350px;border-radius:10px;float:right;margin-left:25px;">
+
+  <p>
+    Jarvis Chaney is a visionary leader and community architect who believes young men and women achieve when they are given structure, expectation, consistency, and opportunity.
+  </p>
+  <p>
+    His mission: build systems that transform lives—not in theory, but in measurable reality.
+  </p>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+  <h2>Mission</h2>
+  <div class="divider"></div>
+
+  <p>
+    Provide youth with the mindset, exposure, accountability, and real-world development needed to become the highest version of themselves—no matter their past or environment.
+  </p>
+
+  <h3>Vision</h3>
+  <p>
+    A future where every young person has access to discipline, growth systems, and world-expanding experience pathways.
+  </p>
+
+  <h3>Core Values</h3>
+  <ul>
+    <li>Discipline & Responsibility</li>
+    <li>Character Development</li>
+    <li>Leadership Through Action</li>
+    <li>Emotional Intelligence</li>
+    <li>Communication & Presence</li>
+    <li>Real-World Exposure</li>
+  </ul>
 </section>
 
 <!-- PROGRAMS -->
-<section id="programs" class="section">
-  <h2>Programs We Offer</h2>
-  <div class="programs-grid">
-    <article class="program-card">
-      <img src="https://github.com/mykelkitara-oss/feeding/blob/main/IMG_1908.jpeg?raw=true">
-      <div class="meta">
-        <h4>Mentorship</h4>
-        <p>Direct youth empowerment and coaching.</p>
-      </div>
-    </article>
+<section id="programs">
+  <h2>Our Programs</h2>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Life Development Curriculum</h3>
+      <p>Weekly structured lessons in accountability, emotional control, communication, and presence.</p>
+    </div>
+
+    <div class="card">
+      <h3>Career & Workforce Readiness</h3>
+      <p>Resume building, interview mastery, professional communication, and real work simulations.</p>
+    </div>
+
+    <div class="card">
+      <h3>Exposure Experiences</h3>
+      <p>Corporate visits, business tours, college pathways, and cultural enrichment trips.</p>
+    </div>
+
+    <div class="card">
+      <h3>Leadership Standards</h3>
+      <p>Systems that build strong identity, self-respect, and consistent personal excellence.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <h2>Leadership & Staff</h2>
+  <div class="divider"></div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Jarvis Chaney</h3>
+      <p>Founder & Executive Director</p>
+    </div>
+
+    <div class="card">
+      <h3>Leadership Coordinator</h3>
+      <p>Ensures accountability, growth tracking, and student development systems.</p>
+    </div>
+
+    <div class="card">
+      <h3>Program Manager</h3>
+      <p>Schedules events, manages planning, and organizes experiential learning sessions.</p>
+    </div>
+
   </div>
 </section>
 
-<!-- SIGNUP -->
-<section id="signup" class="section">
-  <h2>Sign Up — Get Involved</h2>
-  <p class="lead">Kids apply below — volunteers support our mission.</p>
+<!-- TESTIMONIALS -->
+<section>
+  <h2>Testimonials</h2>
+  <div class="divider"></div>
 
-  <div class="forms">
-    <div class="form-card">
-      <h4 style="color:var(--accent-blue)">Kids Application</h4>
-      <form action="https://formspree.io/f/mvgprgpn" method="POST">
-        <label>Full name</label>
-        <input type="text" name="name" required>
-        <label>Age</label>
-        <input type="text" name="age" required>
-        <label>Why do you want to join?</label>
-        <textarea name="msg"></textarea>
-        <button>Apply</button>
-      </form>
+  <div class="grid">
+    <div class="card">
+      <p>“Jay’s Impact changed my son as a man. His confidence grew, his communication improved, and he sees his future differently.”</p>
+      <strong>– Parent</strong>
     </div>
 
-    <div class="form-card">
-      <h4 style="color:var(--accent-red)">Volunteer</h4>
-      <form action="https://formspree.io/f/mvgprgpn" method="POST">
-        <label>Full name</label>
-        <input type="text" name="name" required>
-        <label>Email</label>
-        <input type="email" name="email" required>
-        <button>Join</button>
-      </form>
+    <div class="card">
+      <p>“I learned how to carry myself and speak like a young professional. This changed my life.”</p>
+      <strong>– Student</strong>
+    </div>
+
+    <div class="card">
+      <p>“This program delivers what schools can’t: real transformation.”</p>
+      <strong>– Community Leader</strong>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="section">
-  <h2>Frequently Asked Questions</h2>
+<!-- GALLERY -->
+<section id="gallery">
+  <h2>Program Gallery</h2>
+  <div class="divider"></div>
 
-  <div class="faq-item">
-    <div class="faq-question">How much does it cost to join?</div>
-    <div class="faq-answer">All youth programs are currently free.</div>
-  </div>
+  <div class="gallery">
 
-  <div class="faq-item">
-    <div class="faq-question">Where are you located?</div>
-    <div class="faq-answer">3311 Glenwood Rd, Decatur, GA.</div>
-  </div>
+    <img src="https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true">
 
-  <div class="faq-item">
-    <div class="faq-question">Who can volunteer?</div>
-    <div class="faq-answer">Anyone dedicated to helping youth grow and succeed.</div>
+    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
+
+    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
+
+    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
+
+    <video controls>
+      <source src="Appreciation is conformation that you are walking in your purpose! HAPPY BIRTHDAY TO ME!!! #thet.mp4" type="video/mp4">
+    </video>
+
   </div>
 </section>
 
-<!-- DONATE -->
-<section id="donate" class="section">
-  <h2>Support Our Work</h2>
-  <div class="donate-wrap">
-    <p>Your gift fuels mentorship, meals, and community programs.</p>
-    <div style="text-align:center;margin-top:18px">
-      <a class="donate-cta" href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00" target="_blank">
-        Donate via Stripe
-      </a>
-    </div>
-  </div>
+<!-- LIGHTBOX (INTERACTIVE) -->
+<div class="lightbox" id="lightbox">
+  <div class="close-btn" onclick="lightbox.style.display='none'">&times;</div>
+  <img id="lightbox-img" src="">
+  <video id="lightbox-vid" controls style="display:none;"></video>
+</div>
+
+<!-- CONTACT / FOOTER -->
+<section id="contact" style="text-align:center;">
+  <h2>Contact & Partnership</h2>
+  <div class="divider"></div>
+
+  <p>Interested in partnering, sponsoring, or enrolling?</p>
+  <p>Email: <b>contact@jaysimpact.org</b></p>
 </section>
 
 <footer>
-  © 2025 Jay’s Impact Center — Decatur, GA
+  © 2025 Jay’s Impact – All Rights Reserved
 </footer>
 
-<!-- CHATBOT -->
-<div class="chat-btn" id="openChat">💬</div>
-
-<div class="chat-window" id="chatWindow">
-  <div class="chat-header">Ask Jay's Impact AI</div>
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Type your question...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
-
+<!-- LIGHTBOX SCRIPT -->
 <script>
-  /* FAQ Toggle */
-  document.querySelectorAll(".faq-item").forEach(item=>{
-    item.addEventListener("click",()=>{
-      const ans = item.querySelector(".faq-answer");
-      ans.style.display = ans.style.display==="block" ? "none" : "block";
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  const lbVid = document.getElementById("lightbox-vid");
+
+  document.querySelectorAll(".gallery img, .gallery video").forEach(el => {
+    el.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      if(el.tagName.toLowerCase() === "img") {
+        lbImg.src = el.src;
+        lbImg.style.display = "block";
+        lbVid.style.display = "none";
+      } else {
+        lbVid.src = el.querySelector("source").src;
+        lbVid.style.display = "block";
+        lbImg.style.display = "none";
+      }
     });
   });
-
-  /* Chat Bot */
-  const chatWindow = document.getElementById("chatWindow");
-  const chatMessages = document.getElementById("chatMessages");
-  const chatInput = document.getElementById("chatInput");
-
-  document.getElementById("openChat").onclick = ()=>{
-    chatWindow.style.display = chatWindow.style.display==="flex" ? "none" : "flex";
-  };
-
-  function sendMessage(){
-    const msg = chatInput.value.trim();
-    if(!msg) return;
-
-    chatMessages.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
-
-    setTimeout(()=>{
-      chatMessages.innerHTML += `<div><strong>Jay's AI:</strong> Thanks for asking! Someone will respond shortly.</div>`;
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    },500);
-
-    chatInput.value="";
-  }
 </script>
 
 </body>
