@@ -3,281 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jay’s Impact — Empowering The Future</title>
+<title>Jay’s Impact – Empowering Youth</title>
 
 <style>
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        margin: 0;
+        background: #0d0d0d;
+        color: white;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+    }
 
-/* --------------------------
-   GLOBAL THEME
----------------------------*/
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #000;
-    color: white;
-    scroll-behavior: smooth;
-}
+    header {
+        background: linear-gradient(135deg, #000000, #1a1a1a);
+        padding: 35px;
+        text-align: center;
+        font-size: 48px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #00bfff;
+    }
 
-/* Gold highlight */
-.gold { color: #e3b955; }
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 15px 10px;
+        background: #121212;
+        font-size: 18px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 1px solid #222;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+    nav a:hover {
+        background: #00bfff;
+        color: black;
+    }
 
-/* --------------------------
-   GLASS NAVBAR
----------------------------*/
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 18px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(12px);
-    background: rgba(0,0,0,0.45);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    z-index: 1000;
-}
+    section {
+        padding: 60px 10%;
+        margin: 0 auto;
+        max-width: 1200px;
+        animation: fadeIn 1.3s ease;
+    }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: 500;
-    transition: 0.2s;
-}
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-nav a:hover {
-    color: #e3b955;
-}
+    h2 {
+        font-size: 44px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        font-weight: 800;
+    }
 
-/* --------------------------
-   HERO SECTION
----------------------------*/
-.hero {
-    margin-top: 85px;
-    height: 90vh;
-    background-size: cover;
-    background-position: center;
-    animation: slideShow 24s infinite;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+    .btn {
+        display: inline-block;
+        background: #00bfff;
+        padding: 16px 28px;
+        color: black;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 20px;
+        transition: 0.3s;
+    }
+    .btn:hover {
+        background: #0099cc;
+        transform: scale(1.04);
+    }
 
-@keyframes slideShow {
-    0% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true'); }
-    33% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true'); }
-    66% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true'); }
-    100% { background-image: url('https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true'); }
-}
+    .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+    .impact-box {
+        padding: 25px;
+        background: #161616;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px solid #222;
+        transition: 0.3s;
+    }
+    .impact-box:hover {
+        transform: translateY(-5px);
+        background: #1d1d1d;
+    }
 
-.hero h1 {
-    font-size: 65px;
-    font-weight: 700;
-    text-shadow: 0 0 25px black;
-}
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 25px;
+    }
+    iframe {
+        width: 100%;
+        height: 350px;
+        border-radius: 15px;
+        border: none;
+    }
 
-.hero .cta {
-    margin-top: 20px;
-    padding: 15px 32px;
-    background: #e3b955;
-    color: black;
-    font-weight: 700;
-    border-radius: 8px;
-    display: inline-block;
-    text-decoration: none;
-    transition: 0.2s;
-}
+    .faq-item {
+        background: #1a1a1a;
+        padding: 22px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        border: 1px solid #222;
+    }
 
-.hero .cta:hover {
-    box-shadow: 0 0 20px #e3b955;
-}
-
-/* --------------------------
-   SECTIONS
----------------------------*/
-section {
-    padding: 100px 10%;
-}
-
-h2 {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* --------------------------
-   IMAGE ROWS / GALLERY
----------------------------*/
-.img-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.img-row img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-/* --------------------------
-   FORMS
----------------------------*/
-form {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 14px;
-    margin-top: 12px;
-    border-radius: 8px;
-    border: none;
-}
-
-button {
-    margin-top: 20px;
-    padding: 14px 26px;
-    background: #e3b955;
-    color: black;
-    border: none;
-    font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover {
-    box-shadow: 0 0 18px #e3b955;
-}
-
-/* --------------------------
-   FOOTER
----------------------------*/
-footer {
-    background: rgba(255,255,255,0.05);
-    padding: 40px;
-    text-align: center;
-    margin-top: 80px;
-}
+    footer {
+        background: #000;
+        padding: 40px;
+        text-align: center;
+        margin-top: 50px;
+        border-top: 1px solid #222;
+    }
 
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<header>Jay’s Impact</header>
+
 <nav>
-    <div class="logo gold"><b>JAY’S IMPACT</b></div>
-    <div>
-        <a href="#about">About</a>
-        <a href="#story">Our Story</a>
-        <a href="#programs">Programs</a>
-        <a href="#volunteer">Volunteer</a>
-        <a href="#donate">Donate</a>
-    </div>
+    <a href="#story">Story</a>
+    <a href="#impact">Impact</a>
+    <a href="#interview">Interview</a>
+    <a href="#success">Success Stories</a>
+    <a href="#signup">Sign Up</a>
+    <a href="#donate">Donate</a>
+    <a href="#faq">FAQ</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-    <div>
-        <h1><span class="gold">Jay’s Impact</span> Is Changing Lives</h1>
-        <a class="cta" href="#donate">Support The Mission</a>
-    </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2 class="gold">About Jay’s Impact</h2>
+<!-- STORY -->
+<section id="story">
+    <h2>Our Story</h2>
     <p>
-        Jay’s Impact is dedicated to transforming youth, families, and communities by offering mentorship,
-        leadership programs, and impactful outreach. Our mission is to build brighter futures through
-        empowerment, structure, creativity, and love.
+        Jay’s Impact is a movement built on discipline, mentorship, development, real-life skills,
+        and empowering young people to follow the right path. 
+        We rebuild confidence, strengthen communities, and create opportunities that 
+        change kids’ lives forever.
     </p>
 
-    <h3 class="gold">Meet Jarvis Chaney</h3>
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/Hello!%20I%20am%20Jarvis%20Chaney-fotor-20251030144635.jpg?raw=true" 
-         style="width:260px;border-radius:12px;margin-top:15px;">
+    <h3 style="margin-top:40px;">Featured Instagram Story</h3>
+    <iframe src="https://www.instagram.com/reel/DIGq1QSgvwP/embed" allowfullscreen></iframe>
 </section>
 
-<!-- OUR STORY (YouTube) -->
-<section id="story">
-    <h2 class="gold">Our Story</h2>
-    <iframe width="100%" height="400" 
-        src="https://www.youtube.com/embed/zgNj6GWTLEo"
-        frameborder="0" allowfullscreen style="border-radius:12px;"></iframe>
+<!-- IMPACT GRID -->
+<section id="impact">
+    <h2>Our Impact</h2>
+    <div class="impact-grid">
+        <div class="impact-box">
+            <h3>400+ Kids</h3>
+            Lives influenced through mentorship and activities.
+        </div>
+        <div class="impact-box">
+            <h3>25+ Events</h3>
+            Hosted to empower youth and families.
+        </div>
+        <div class="impact-box">
+            <h3>100% Community</h3>
+            Every dollar goes directly to the mission.
+        </div>
+        <div class="impact-box">
+            <h3>Growing Daily</h3>
+            Our movement expands every single week.
+        </div>
+    </div>
 </section>
 
-<!-- INSTAGRAM REEL -->
-<section>
-    <h2 class="gold">Jay’s Impact — Instagram Highlight</h2>
-    <iframe 
-       src="https://www.instagram.com/reel/DQRca2BkTOS/embed"
-       width="100%" height="500" frameborder="0" scrolling="no"
-       allowtransparency="true" style="border-radius:20px;">
-    </iframe>
-</section>
-
-<!-- PROGRAMS -->
-<section id="programs">
-    <h2 class="gold">Programs</h2>
-
-    <div class="img-row">
-        <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
-        <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
-        <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
+<!-- INTERVIEW -->
+<section id="interview">
+    <h2>An Interview</h2>
+    <div class="video-grid">
+        <iframe src="https://www.youtube.com/embed/zgNj6GWTLEo" allowfullscreen></iframe>
     </div>
 </section>
 
 <!-- SUCCESS STORIES -->
-<section>
-    <h2 class="gold">Success Stories</h2>
-    <iframe width="100%" height="400" 
-        src="https://www.youtube.com/embed/zgNj6GWTLEo"
-        frameborder="0" allowfullscreen style="border-radius:12px;"></iframe>
+<section id="success">
+    <h2>Success Stories</h2>
+
+    <h3>Instagram Story</h3>
+    <iframe src="https://www.instagram.com/reel/DIGq1QSgvwP/embed" allowfullscreen></iframe>
+
+    <h3 style="margin-top:40px;">YouTube Story</h3>
+    <iframe src="https://www.youtube.com/embed/zgNj6GWTLEo" allowfullscreen></iframe>
 </section>
 
-<!-- VOLUNTEER -->
-<section id="volunteer">
-    <h2 class="gold">Volunteer With Us</h2>
-    <form>
-        <input type="text" placeholder="Full Name">
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Phone Number">
-        <textarea placeholder="Why do you want to volunteer?" rows="4"></textarea>
-        <button>Submit Volunteer Application</button>
-    </form>
+<!-- SIGN UP -->
+<section id="signup">
+    <h2>Get Involved</h2>
+    <p>Help support the movement. Become a part of Jay’s Impact today.</p>
+
+    <p><a class="btn" href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00" target="_blank">Donate</a></p>
+    <p><a class="btn" href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00" target="_blank">Volunteer Sign-Up</a></p>
+    <p><a class="btn" href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00" target="_blank">Kids Program Sign-Up</a></p>
 </section>
 
-<!-- KIDS SIGNUP -->
-<section>
-    <h2 class="gold">Kids Program Enrollment</h2>
-    <form>
-        <input type="text" placeholder="Parent/Guardian Name">
-        <input type="text" placeholder="Child’s Name">
-        <input type="number" placeholder="Child’s Age">
-        <input type="email" placeholder="Contact Email">
-        <textarea placeholder="Tell us about your child" rows="4"></textarea>
-        <button>Sign Up</button>
-    </form>
-</section>
-
-<!-- DONATE -->
+<!-- DONATION -->
 <section id="donate">
-    <h2 class="gold">Support the Mission</h2>
-    <p>Your donation helps us mentor and empower the next generation.</p>
-    <a href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00">
-        <button>Donate Now</button>
-    </a>
+    <h2>Support The Mission</h2>
+    <p>Your donation directly funds youth programs, events, sports gear, mentorship, and community development.</p>
+    <a class="btn" href="https://buy.stripe.com/8x228q7hw6UD0PdazNgbm00" target="_blank">Donate Now</a>
 </section>
 
-<!-- FOOTER -->
-<footer
+<!-- FAQ -->
+<section id="faq">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+        <strong>What does Jay’s Impact do?</strong>
+        <p>We mentor youth, teach discipline, offer guidance, and create a better future for kids.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>Is this nonprofit legit?</strong>
+        <p>Yes — everything is transparent, community-focused, and donation-funded.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>Where does my donation go?</strong>
+        <p>Directly to kids’ programs, sports equipment, events, workshops, and community support.</p>
+    </div>
+</section>
+
+<footer>
+    © 2025 Jay’s Impact — Changing Lives Daily.
+</footer>
+
+</body>
+</html>
+
