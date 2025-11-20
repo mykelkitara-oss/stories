@@ -2,426 +2,218 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jay’s Impact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay's Impact</title>
 
 <style>
-  /* ======================================
-     GLOBAL STYLES
-  ====================================== */
-  body {
-    margin: 0;
-    background: #0d0d0d;
-    color: #e6e6e6;
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+    /* ===== RESET ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  h1,h2,h3 {
-    font-weight: 700;
-    color: #d4a73b;
-    letter-spacing: 0.5px;
-  }
+    body {
+        font-family: Arial, sans-serif;
+        background: #080808;
+        color: #fff;
+        line-height: 1.7;
+        overflow-x: hidden;
+    }
 
-  a {
-    text-decoration: none;
-    color: #d4a73b;
-  }
+    /* ===== URBAN THEME COLORS ===== */
+    :root {
+        --accent: #1e90ff;
+        --accent2: #0aff9d;
+        --section-bg: #111;
+    }
 
-  section {
-    padding: 80px 8%;
-    max-width: 1300px;
-    margin: auto;
-  }
+    /* ===== GLOBAL ===== */
+    section {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: auto;
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
+    }
 
-  /* ======================================
-     NAVIGATION
-  ====================================== */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    backdrop-filter: blur(8px);
-    padding: 20px 8%;
-    z-index: 999;
-    display: flex;
-    justify-content: space-between;
-  }
+    h2 {
+        font-size: 2.4rem;
+        margin-bottom: 25px;
+        border-left: 6px solid var(--accent);
+        padding-left: 12px;
+        letter-spacing: 0.5px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 
-  nav a {
-    color: #e6e6e6;
-    margin-left: 25px;
-    font-weight: 600;
-    font-size: 15px;
-    transition: .3s;
-  }
-  nav a:hover {
-    color: #d4a73b;
-  }
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
 
-  /* ======================================
-     HERO
-  ====================================== */
-  .hero {
-    height: 95vh;
-    background: #000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+    /* ===== HERO ===== */
+    header {
+        height: 80vh;
+        width: 100%;
+        background:
+            linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)),
+            url('https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true')
+            center/cover no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        animation: fadeIn 1.5s ease forwards;
+    }
 
-  .hero img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    animation: fade 18s infinite;
-    opacity: 0;
-  }
+    header h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
 
-  .hero img:nth-child(1) { animation-delay: 0s; }
-  .hero img:nth-child(2) { animation-delay: 6s; }
-  .hero img:nth-child(3) { animation-delay: 12s; }
+    /* ===== MEDIA GLOBAL ===== */
+    .media {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 14px 0;
+        transition: transform .4s;
+    }
 
-  @keyframes fade {
-    0%   { opacity: 0 }
-    10%  { opacity: 1 }
-    30%  { opacity: 1 }
-    40%  { opacity: 0 }
-    100% { opacity: 0 }
-  }
+    .media:hover {
+        transform: scale(1.02);
+    }
 
-  .hero-text {
-    position: relative;
-    text-align: center;
-    z-index: 2;
-  }
+    .media img,
+    .media video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 
-  .hero-text h1 {
-    font-size: 60px;
-    color: white;
-  }
+    /* ===== GALLERY GRID ===== */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+    }
 
-  .hero-text p {
-    font-size: 20px;
-    margin-top: 10px;
-    max-width: 600px;
-    margin: 10px auto;
-    color: #fff;
-  }
+    /* ===== BIO CARD ===== */
+    .bio-card {
+        background: var(--section-bg);
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 0 18px rgba(255,255,255,0.05);
+    }
 
-  /* ======================================
-     GOLD DIVIDER
-  ====================================== */
-  .divider {
-    width: 120px;
-    height: 2px;
-    background: #d4a73b;
-    margin: 25px auto;
-  }
+    /* ===== FOOTER ===== */
+    footer {
+        padding: 45px;
+        text-align: center;
+        background: #000;
+        margin-top: 60px;
+        border-top: 2px solid #222;
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
+    }
 
-  /* ======================================
-     LEADERSHIP CARDS
-  ====================================== */
-  .grid {
-    display: grid;
-    gap: 25px;
-    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
-  }
-
-  .card {
-    background: #111;
-    padding: 25px;
-    border: 1px solid #292929;
-    border-radius: 10px;
-    transition: .3s;
-  }
-  .card:hover {
-    border-color: #d4a73b;
-    transform: translateY(-4px);
-  }
-
-  /* ======================================
-     GALLERY
-  ====================================== */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-
-  .gallery img, .gallery video {
-    width: 100%;
-    border-radius: 8px;
-    transition: .3s;
-    cursor: pointer;
-  }
-
-  .gallery img:hover, .gallery video:hover {
-    transform: scale(1.03);
-  }
-
-  /* LIGHTBOX */
-  .lightbox {
-    position: fixed;
-    display: none;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-  }
-  .lightbox img, .lightbox video {
-    max-width: 90%;
-    max-height: 90%;
-  }
-  .close-btn {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    font-size: 40px;
-    cursor: pointer;
-    color: white;
-  }
-
-  /* ======================================
-     FOOTER
-  ====================================== */
-  footer {
-    background: #000;
-    text-align: center;
-    padding: 50px 0;
-    color: #6e6e6e;
-  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div style="font-weight:bold;color:#d4a73b;">JAY’S IMPACT</div>
-  <div>
-    <a href="#about">ABOUT</a>
-    <a href="#mission">MISSION</a>
-    <a href="#programs">PROGRAMS</a>
-    <a href="#leadership">LEADERSHIP</a>
-    <a href="#gallery">GALLERY</a>
-    <a href="#contact">CONTACT</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
-  <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
-  <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
-
-  <div class="hero-text">
-    <h1>Developing Leaders of the Future</h1>
-    <p>Real mentorship, real growth, real opportunities.</p>
-  </div>
-</section>
+<header>
+    <h1>JAY’S IMPACT</h1>
+</header>
 
 <!-- ABOUT -->
-<section id="about">
-  <h2>Who We Are</h2>
-  <div class="divider"></div>
-
-  <video controls style="width:100%;border-radius:10px;">
-    <source src="This is who Jay’s Impact is! 💪🏽✨ We’re on a mission to impact lives and build a better future.mp4" type="video/mp4">
-  </video>
-
-  <p>
-    Jay’s Impact is a movement built to develop the next generation into leaders with the character, discipline, emotional intelligence, and purpose to succeed in life. 
-  </p>
-  <p>
-    We provide real-world experiences, mentorship structures, and environments that strengthen communication, mindset, and professional growth.
-  </p>
-</section>
-
-<!-- FOUNDER -->
 <section>
-  <h2>Founder – Jarvis Chaney</h2>
-  <div class="divider"></div>
+    <h2>About Us</h2>
+    <p>
+        Jay’s Impact is built on a mission of empowerment, discipline, guidance, education, and real change.
+        We are here to prepare the next generation not just to survive — but to thrive.
+    </p>
 
-  <img src="https://github.com/mykelkitara-oss/stories/blob/main/Hello!%20I%20am%20Jarvis%20Chaney-fotor-20251030144635.jpg?raw=true" style="width:350px;border-radius:10px;float:right;margin-left:25px;">
-
-  <p>
-    Jarvis Chaney is a visionary leader and community architect who believes young men and women achieve when they are given structure, expectation, consistency, and opportunity.
-  </p>
-  <p>
-    His mission: build systems that transform lives—not in theory, but in measurable reality.
-  </p>
+    <!-- Main Intro Video -->
+    <div class="media">
+        <video controls>
+            <source src="This is who Jay’s Impact is! 💪🏽✨ We’re on a mission to impact lives and build a better future.mp4" type="video/mp4">
+        </video>
+    </div>
 </section>
 
-<!-- MISSION -->
-<section id="mission">
-  <h2>Mission</h2>
-  <div class="divider"></div>
+<!-- JARVIS BIO -->
+<section style="background: var(--section-bg);">
+    <h2>Meet Jarvis Chaney</h2>
 
-  <p>
-    Provide youth with the mindset, exposure, accountability, and real-world development needed to become the highest version of themselves—no matter their past or environment.
-  </p>
+    <div class="bio-card">
+        <div class="media">
+            <img src="https://github.com/mykelkitara-oss/stories/blob/main/Hello!%20I%20am%20Jarvis%20Chaney-fotor-20251030144635.jpg?raw=true" alt="Jarvis">
+        </div>
 
-  <h3>Vision</h3>
-  <p>
-    A future where every young person has access to discipline, growth systems, and world-expanding experience pathways.
-  </p>
-
-  <h3>Core Values</h3>
-  <ul>
-    <li>Discipline & Responsibility</li>
-    <li>Character Development</li>
-    <li>Leadership Through Action</li>
-    <li>Emotional Intelligence</li>
-    <li>Communication & Presence</li>
-    <li>Real-World Exposure</li>
-  </ul>
+        <p style="margin-top: 15px;">
+            Jarvis Chaney is the founder and mentor behind Jay’s Impact — dedicated to helping young men and women grow in mindset, maturity, leadership, discipline, and purpose.
+        </p>
+    </div>
 </section>
 
-<!-- PROGRAMS -->
-<section id="programs">
-  <h2>Our Programs</h2>
-  <div class="divider"></div>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Life Development Curriculum</h3>
-      <p>Weekly structured lessons in accountability, emotional control, communication, and presence.</p>
-    </div>
-
-    <div class="card">
-      <h3>Career & Workforce Readiness</h3>
-      <p>Resume building, interview mastery, professional communication, and real work simulations.</p>
-    </div>
-
-    <div class="card">
-      <h3>Exposure Experiences</h3>
-      <p>Corporate visits, business tours, college pathways, and cultural enrichment trips.</p>
-    </div>
-
-    <div class="card">
-      <h3>Leadership Standards</h3>
-      <p>Systems that build strong identity, self-respect, and consistent personal excellence.</p>
-    </div>
-  </div>
-
-</section>
-
-<!-- LEADERSHIP -->
-<section id="leadership">
-  <h2>Leadership & Staff</h2>
-  <div class="divider"></div>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Jarvis Chaney</h3>
-      <p>Founder & Executive Director</p>
-    </div>
-
-    <div class="card">
-      <h3>Leadership Coordinator</h3>
-      <p>Ensures accountability, growth tracking, and student development systems.</p>
-    </div>
-
-    <div class="card">
-      <h3>Program Manager</h3>
-      <p>Schedules events, manages planning, and organizes experiential learning sessions.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
+<!-- OUR STORY -->
 <section>
-  <h2>Testimonials</h2>
-  <div class="divider"></div>
-
-  <div class="grid">
-    <div class="card">
-      <p>“Jay’s Impact changed my son as a man. His confidence grew, his communication improved, and he sees his future differently.”</p>
-      <strong>– Parent</strong>
-    </div>
-
-    <div class="card">
-      <p>“I learned how to carry myself and speak like a young professional. This changed my life.”</p>
-      <strong>– Student</strong>
-    </div>
-
-    <div class="card">
-      <p>“This program delivers what schools can’t: real transformation.”</p>
-      <strong>– Community Leader</strong>
-    </div>
-  </div>
+    <h2>Our Story</h2>
+    <p>
+        Jay’s Impact is more than a program — it is transformation. Built from real experience and community-driven support,
+        we believe that no young person should ever feel alone in their life journey.
+    </p>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <h2>Program Gallery</h2>
-  <div class="divider"></div>
+<!-- INSIDE THE PROGRAM -->
+<section style="background: var(--section-bg);">
+    <h2>Inside the Program</h2>
 
-  <div class="gallery">
+    <p style="margin-bottom: 25px;">
+        Hands-on learning, real conversations, real work, real growth. Here is a look inside our sessions:
+    </p>
 
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true">
+    <div class="gallery">
 
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
+        <div class="media">
+            <img src="https://github.com/mykelkitara-oss/stories/blob/main/A17732CB-23EB-463E-B5BC-8E2480667060.jpeg?raw=true">
+        </div>
 
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
+        <div class="media">
+            <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0075.jpeg?raw=true">
+        </div>
 
-    <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
+        <div class="media">
+            <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_0153.jpeg?raw=true">
+        </div>
 
-    <video controls>
-      <source src="Appreciation is conformation that you are walking in your purpose! HAPPY BIRTHDAY TO ME!!! #thet.mp4" type="video/mp4">
-    </video>
+        <div class="media">
+            <img src="https://github.com/mykelkitara-oss/stories/blob/main/IMG_1908.jpeg?raw=true">
+        </div>
 
-  </div>
+    </div>
 </section>
 
-<!-- LIGHTBOX (INTERACTIVE) -->
-<div class="lightbox" id="lightbox">
-  <div class="close-btn" onclick="lightbox.style.display='none'">&times;</div>
-  <img id="lightbox-img" src="">
-  <video id="lightbox-vid" controls style="display:none;"></video>
-</div>
+<!-- VIDEO CELEBRATION -->
+<section>
+    <h2>Celebration & Milestones</h2>
+    <p>
+        Every step forward is worth celebrating — because growth is confirmation of a purpose being fulfilled.
+    </p>
 
-<!-- CONTACT / FOOTER -->
-<section id="contact" style="text-align:center;">
-  <h2>Contact & Partnership</h2>
-  <div class="divider"></div>
-
-  <p>Interested in partnering, sponsoring, or enrolling?</p>
-  <p>Email: <b>contact@jaysimpact.org</b></p>
+    <div class="media">
+        <video controls>
+            <source src="Appreciation is conformation that you are walking in your purpose! HAPPY BIRTHDAY TO ME!!! #thet.mp4" type="video/mp4">
+        </video>
+    </div>
 </section>
 
 <footer>
-  © 2025 Jay’s Impact – All Rights Reserved
+    © Jay’s Impact — Empowering the Next Generation
 </footer>
-
-<!-- LIGHTBOX SCRIPT -->
-<script>
-  const lightbox = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightbox-img");
-  const lbVid = document.getElementById("lightbox-vid");
-
-  document.querySelectorAll(".gallery img, .gallery video").forEach(el => {
-    el.addEventListener("click", () => {
-      lightbox.style.display = "flex";
-      if(el.tagName.toLowerCase() === "img") {
-        lbImg.src = el.src;
-        lbImg.style.display = "block";
-        lbVid.style.display = "none";
-      } else {
-        lbVid.src = el.querySelector("source").src;
-        lbVid.style.display = "block";
-        lbImg.style.display = "none";
-      }
-    });
-  });
-</script>
 
 </body>
 </html>
